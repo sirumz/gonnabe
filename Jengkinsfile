@@ -2,17 +2,18 @@ pipeline {
   agent any
     stages {
       stage('Starting ...') {
-        echo 'Starting'
+        steps {
+          echo 'Starting'
+        }
+     }
+     stage('Compiling') {
+        steps {
+          bat '\tools\jdk-18.0.1.1\bin\javac.exe Start.java'
+        }
       }
-    }
-    stage('Compiling')
-      steps {
-        bat 'tools\jdk-18.0.1.1\bin\javac.exe Start.java'
-      }
-    }
-    stage('Testing')
-      steps {
-        bat 'tools\jdk-18.0.1.1\bin\javac.exe Start'
+      stage('Testing') {
+        steps {
+          bat '\tools\jdk-18.0.1.1\bin\javac.exe Start'
       }
     }
   }
